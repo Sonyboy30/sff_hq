@@ -60,8 +60,9 @@ apply_branding()
 # SIMPLE AUTH
 # =========================
 
+# You can change these passwords anytime
 USERS = {
-    "arav": {"password": "sffboss", "role": "admin"},
+    "arav": {"password": "visionary", "role": "admin"},
     "board": {"password": "boardview", "role": "board"},
 }
 
@@ -97,7 +98,7 @@ def ensure_auth():
 ensure_auth()
 role = st.session_state["user"]["role"]
 
-# Sidebar header + logout
+# Sidebar header + logout + public site link
 st.sidebar.markdown(
     "<div class='sff-sidebar-header'>Soni Family Foundation</div>",
     unsafe_allow_html=True,
@@ -106,8 +107,10 @@ st.sidebar.markdown(
     "<div class='sff-tagline'>Unlocking Opportunity Through Education</div>",
     unsafe_allow_html=True,
 )
-
 st.sidebar.write(f"👤 **{st.session_state['user']['name']}** ({role})")
+st.sidebar.markdown(
+    "[🌐 View public site](https://www.sonifoundation.org) ",
+)
 
 if st.sidebar.button("Logout"):
     st.session_state["user"] = None
